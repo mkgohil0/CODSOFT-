@@ -62,7 +62,4 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.addEventListener('click', closeDrawer);
     }
 
-    // Note: The old hamburger menus (.hamburger-menu-top, .hamburger-menu-bottom) are not in the new header.
-    // This script is now tied to the new mobile menu button.
-
 });
