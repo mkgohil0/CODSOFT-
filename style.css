@@ -1,8 +1,6 @@
 /*
   style.css
   This file contains the custom styles for the Sudhh Organic website.
-  The header is styled using Tailwind CSS directly in the index.html file.
-  This stylesheet handles the main content sections, footer, and custom header animations.
 */
 
 /* General Styling */
@@ -107,7 +105,7 @@ a {
     transition: color 0.3s ease;
 }
 .nav-link:hover {
-    color: var(--brand-secondary); /* Use our brand color */
+    color: var(--brand-secondary);
 }
 .nav-link::after {
     content: '';
@@ -117,7 +115,7 @@ a {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--brand-primary); /* Use our brand color */
+    background-color: var(--brand-primary);
     transition: width 0.3s ease;
 }
 .nav-link:hover::after {
@@ -134,7 +132,7 @@ a {
     align-items: center;
     justify-content: center;
     min-height: 550px;
-    background-color: var(--hero-color-1); /* Initial color */
+    background-color: var(--hero-color-1);
     transition: background-color 1.5s ease-in-out;
 }
 .hero-content {
@@ -212,7 +210,14 @@ section:nth-of-type(even) {
     width: 100%;
     padding: 12px;
     font-size: 1em;
-    border-radius: 8px; /* Match other buttons */
+    border-radius: 8px;
+}
+
+/* Product Link Styles */
+.product-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 /* Why Choose Us */
@@ -290,7 +295,7 @@ section:nth-of-type(even) {
 
 /* Footer */
 footer {
-    background-color: #1c2833; /* Darker footer background */
+    background-color: #1c2833;
     color: rgba(255, 255, 255, 0.8);
     padding-top: 60px;
 }
@@ -332,7 +337,7 @@ footer {
     font-size: 0.9em;
 }
 
-/* Styles for the mobile side drawer functionality */
+/* Mobile Side Drawer */
 .mobile-side-drawer {
     transition: transform 0.3s ease-in-out;
 }
@@ -345,7 +350,6 @@ footer {
 body.no-scroll {
     overflow: hidden;
 }
-
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
