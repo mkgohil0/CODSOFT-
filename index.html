@@ -17,9 +17,6 @@
 </head>
 <body>
 
-    <!-- ================================================================= -->
-    <!-- ============== NEW HEADER STARTS HERE =========================== -->
-    <!-- ================================================================= -->
     <header class="bg-white shadow-md">
         <!-- Top Bar -->
         <div class="bg-gray-100 py-2 px-4 sm:px-6 lg:px-8">
@@ -57,7 +54,6 @@
 
                 <!-- Header Icons -->
                 <div class="flex items-center gap-4 sm:gap-6">
-                    <!-- THIS IS THE LINK THAT WAS CHANGED -->
                     <a href="login.html" class="hidden sm:flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         <span class="hidden xl:block">Account</span>
@@ -67,10 +63,6 @@
                         <span class="hidden xl:block">Cart</span>
                         <span class="absolute -top-2 -right-2 bg-green-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
                     </a>
-                     <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-button" class="lg:hidden text-gray-700 hover:text-green-600">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-                    </button>
                 </div>
             </div>
              <!-- Mobile Search Bar -->
@@ -99,10 +91,6 @@
             </div>
         </nav>
     </header>
-    <!-- ================================================================= -->
-    <!-- ============== NEW HEADER ENDS HERE ============================= -->
-    <!-- ================================================================= -->
-
 
     <main>
         <section class="hero-banner" id="home">
@@ -119,29 +107,29 @@
             <div class="container">
                 <h2>Our Featured Organic Products</h2>
                 <div class="product-grid">
-                    <div class="product-item">
-                        <img src="honey.png" alt="Organic Honey">
+                    <div class="product-item clickable-product" data-name="Organic Honey" data-price="$12.99" data-img="https://placehold.co/600x600/A8E6CF/333333?text=Organic+Honey" data-desc="Pure and natural, straight from the beehive.">
+                        <img src="https://placehold.co/400x400/A8E6CF/333333?text=Organic+Honey" alt="Organic Honey">
                         <h3>Organic Honey</h3>
                         <p>Pure and natural, straight from the beehive.</p>
                         <span class="price">$12.99</span>
                         <button class="add-to-cart-btn">Add to Cart</button>
                     </div>
-                    <div class="product-item">
-                        <img src="oil.png" alt="Cold-Pressed Oil">
+                    <div class="product-item clickable-product" data-name="Cold-Pressed Oil" data-price="$18.50" data-img="https://placehold.co/600x600/DCEDC8/333333?text=Cold-Pressed+Oil" data-desc="Healthy and unrefined oils for your kitchen.">
+                        <img src="https://placehold.co/400x400/DCEDC8/333333?text=Cold-Pressed+Oil" alt="Cold-Pressed Oil">
                         <h3>Cold-Pressed Oil</h3>
                         <p>Healthy and unrefined oils for your kitchen.</p>
                         <span class="price">$18.50</span>
                         <button class="add-to-cart-btn">Add to Cart</button>
                     </div>
-                    <div class="product-item">
-                        <img src="grain.png" alt="Organic Grains">
+                    <div class="product-item clickable-product" data-name="Organic Grains" data-price="$7.99" data-img="https://placehold.co/600x600/FFD3B5/333333?text=Organic+Grains" data-desc="Wholesome and nutritious for a balanced diet.">
+                        <img src="https://placehold.co/400x400/FFD3B5/333333?text=Organic+Grains" alt="Organic Grains">
                         <h3>Organic Grains</h3>
                         <p>Wholesome and nutritious for a balanced diet.</p>
                         <span class="price">$7.99</span>
                         <button class="add-to-cart-btn">Add to Cart</button>
                     </div>
-                    <div class="product-item">
-                        <img src="tea.png" alt="Herbal Tea Blends">
+                    <div class="product-item clickable-product" data-name="Herbal Tea Blends" data-price="$9.25" data-img="https://placehold.co/600x600/FFAAA5/333333?text=Herbal+Tea" data-desc="Soothing and refreshing, naturally.">
+                        <img src="https://placehold.co/400x400/FFAAA5/333333?text=Herbal+Tea" alt="Herbal Tea Blends">
                         <h3>Herbal Tea Blends</h3>
                         <p>Soothing and refreshing, naturally.</p>
                         <span class="price">$9.25</span>
