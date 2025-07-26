@@ -332,6 +332,21 @@ footer {
     font-size: 0.9em;
 }
 
+/* Styles for the mobile side drawer functionality */
+.mobile-side-drawer {
+    transition: transform 0.3s ease-in-out;
+}
+.mobile-side-drawer.active {
+    transform: translateX(0);
+}
+.overlay.active {
+    display: block;
+}
+body.no-scroll {
+    overflow: hidden;
+}
+
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     h2 {
