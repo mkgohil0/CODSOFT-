@@ -17,26 +17,21 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
         let currentColorIndex = 0;
 
-        // Function to change the background color
         function changeHeroColor() {
             currentColorIndex = (currentColorIndex + 1) % heroColors.length;
             heroBanner.style.backgroundColor = heroColors[currentColorIndex];
         }
-
-        // Change color every 5 seconds (5000 milliseconds)
         setInterval(changeHeroColor, 5000);
     }
 
-
     // --- Mobile Side Drawer Functionality ---
-    const mobileMenuButton = document.querySelector('.lg\\:hidden'); // The hamburger icon
+    const mobileMenuButton = document.querySelector('.lg\\:hidden');
     const sideDrawer = document.querySelector('.mobile-side-drawer');
     const overlay = document.querySelector('.overlay');
     const body = document.body;
     const closeDrawerButton = document.querySelector('.close-drawer-btn');
     const drawerLinks = document.querySelectorAll('.drawer-link');
 
-    // Function to open the drawer
     function openDrawer() {
         if (sideDrawer && overlay) {
             sideDrawer.classList.add('active');
@@ -45,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Function to close the drawer
     function closeDrawer() {
         if (sideDrawer && overlay) {
             sideDrawer.classList.remove('active');
@@ -54,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Event listeners to open and close the drawer
     if (mobileMenuButton) {
         mobileMenuButton.addEventListener('click', openDrawer);
     }
@@ -64,11 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (overlay) {
         overlay.addEventListener('click', closeDrawer);
     }
-    
-    // Add event listeners to each link in the drawer to close it on click
     drawerLinks.forEach(link => {
         link.addEventListener('click', closeDrawer);
     });
-
 });
-
