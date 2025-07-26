@@ -1,65 +1,281 @@
-/**
- * script.js
- * This file handles the interactive elements of the Sudhh Organic website.
- */
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    // --- Hero Banner Background Color Changer ---
-    const heroBanner = document.querySelector('.hero-banner');
-    if (heroBanner) {
-        const heroColors = [
-            'var(--hero-color-1)',
-            'var(--hero-color-2)',
-            'var(--hero-color-3)',
-            'var(--hero-color-4)',
-            'var(--hero-color-5)'
-        ];
-        let currentColorIndex = 0;
-
-        // Function to change the background color
-        function changeHeroColor() {
-            currentColorIndex = (currentColorIndex + 1) % heroColors.length;
-            heroBanner.style.backgroundColor = heroColors[currentColorIndex];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuddh Organic - Pure & Natural Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Styles for the mobile side drawer functionality */
+        .mobile-side-drawer {
+            transition: transform 0.3s ease-in-out;
         }
-
-        // Change color every 5 seconds (5000 milliseconds)
-        setInterval(changeHeroColor, 5000);
-    }
-
-
-    // --- Mobile Side Drawer Functionality ---
-    const mobileMenuButton = document.querySelector('.lg\\:hidden'); // The hamburger icon in the new header
-    const sideDrawer = document.querySelector('.mobile-side-drawer');
-    const overlay = document.querySelector('.overlay');
-    const body = document.body;
-
-    // Function to open the drawer
-    function openDrawer() {
-        if (sideDrawer && overlay) {
-            sideDrawer.classList.add('active');
-            overlay.classList.add('active');
-            body.classList.add('no-scroll');
+        .mobile-side-drawer.active {
+            transform: translateX(0);
         }
-    }
-
-    // Function to close the drawer
-    function closeDrawer() {
-        if (sideDrawer && overlay) {
-            sideDrawer.classList.remove('active');
-            overlay.classList.remove('active');
-            body.classList.remove('no-scroll');
+        .overlay.active {
+            display: block;
         }
-    }
+        body.no-scroll {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
 
-    // Event listener for the mobile menu button
-    if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', openDrawer);
-    }
-    
-    // Event listener for the overlay to close the drawer
-    if (overlay) {
-        overlay.addEventListener('click', closeDrawer);
-    }
+    <header class="bg-white shadow-md sticky top-0 z-40">
 
-});
+        <div class="bg-gray-100 py-2 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto flex justify-between items-center text-xs text-gray-600">
+                <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>Delivering to Rajkot</span>
+                </div>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#why-choose-us" class="hover:text-green-600 transition-colors">Why Choose Us</a>
+                    <a href="#testimonials" class="hover:text-green-600 transition-colors">Testimonials</a>
+                    <a href="#contact" class="hover:text-green-600 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-4 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+
+                <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500"><path d="M12 22c-2 0-4-1-4.5-2.5S9 16 12 16s4.5 1 4.5 3.5S14 22 12 22Z"/><path d="M12 16V2"/><path d="m5 10 1.34 2.67a1 1 0 0 0 1.73.04L9 10"/><path d="m15 10 1.34 2.67a1 1 0 0 0 1.73.04L19 10"/></svg>
+                    <span class="text-2xl font-bold text-gray-800">Shuddh Organic</span>
+                </a>
+
+                <div class="hidden lg:flex flex-1 max-w-xl">
+                    <div class="relative w-full">
+                        <input type="search" placeholder="Search Shuddh Organic..." class="w-full pl-4 pr-12 py-2.5 border border-gray-300 rounded-full focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all">
+                        <button class="absolute inset-y-0 right-0 flex items-center justify-center w-12 h-full text-white bg-green-500 rounded-r-full hover:bg-green-600 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 sm:gap-6">
+                    <a href="#" class="hidden sm:flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span class="hidden xl:block">Account</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                        <span class="hidden xl:block">Cart</span>
+                        <span class="absolute -top-2 -right-2 bg-green-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                    </a>
+                    <button class="lg:hidden text-gray-700 hover:text-green-600">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                    </button>
+                </div>
+
+            </div>
+             <div class="mt-4 lg:hidden">
+                <div class="relative w-full">
+                    <input type="search" placeholder="Search Shuddh Organic..." class="w-full pl-4 pr-12 py-2.5 border border-gray-300 rounded-full focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all">
+                    <button class="absolute inset-y-0 right-0 flex items-center justify-center w-12 h-full text-white bg-green-500 rounded-r-full hover:bg-green-600 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <nav class="border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-center h-14">
+                    <div class="flex items-center space-x-8">
+                        <a href="#" class="nav-link text-gray-800 font-medium hover:text-green-600">All</a>
+                        <a href="#" class="nav-link text-gray-800 font-medium hover:text-green-600">Today's Deals</a>
+                        <a href="#featured-products" class="nav-link text-gray-800 font-medium hover:text-green-600">Best Sellers</a>
+                        <a href="#" class="nav-link text-gray-800 font-medium hover:text-green-600">New Arrivals</a>
+                        <a href="#" class="nav-link text-gray-800 font-medium hover:text-green-600">Gift Ideas</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <main>
+        <section class="hero-banner" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Embrace Purity, Live Organically.</h2>
+                    <p>Discover 100% pure, organic, and eco-friendly products for a healthier you and a happier planet.</p>
+                    <a href="#featured-products" class="btn">Shop Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-products" id="featured-products">
+            <div class="container">
+                <h2>Our Featured Organic Products</h2>
+                <div class="product-grid">
+                    
+                    <a href="product-detail.html?product=honey" class="product-link">
+                        <div class="product-item">
+                            <img src="honey.png" alt="Organic Honey">
+                            <h3>Organic Honey</h3>
+                            <p>Pure and natural, straight from the beehive.</p>
+                            <span class="price">$12.99</span>
+                            <button class="add-to-cart-btn">View Details</button>
+                        </div>
+                    </a>
+
+                    <a href="product-detail.html?product=oil" class="product-link">
+                        <div class="product-item">
+                            <img src="oil.png" alt="Cold-Pressed Oil">
+                            <h3>Cold-Pressed Oil</h3>
+                            <p>Healthy and unrefined oils for your kitchen.</p>
+                            <span class="price">$18.50</span>
+                            <button class="add-to-cart-btn">View Details</button>
+                        </div>
+                    </a>
+
+                    <a href="product-detail.html?product=grains" class="product-link">
+                        <div class="product-item">
+                            <img src="grain.png" alt="Organic Grains">
+                            <h3>Organic Grains</h3>
+                            <p>Wholesome and nutritious for a balanced diet.</p>
+                            <span class="price">$7.99</span>
+                            <button class="add-to-cart-btn">View Details</button>
+                        </div>
+                    </a>
+
+                    <a href="product-detail.html?product=tea" class="product-link">
+                        <div class="product-item">
+                            <img src="tea.png" alt="Herbal Tea Blends">
+                            <h3>Herbal Tea Blends</h3>
+                            <p>Soothing and refreshing, naturally.</p>
+                            <span class="price">$9.25</span>
+                            <button class="add-to-cart-btn">View Details</button>
+                        </div>
+                    </a>
+
+                    <a href="product-detail.html?product=spices" class="product-link">
+                        <div class="product-item">
+                            <img src="spices.png" alt="Organic Spices">
+                            <h3>Organic Spices</h3>
+                            <p>Aromatic and flavorful for your culinary needs.</p>
+                            <span class="price">$6.50</span>
+                            <button class="add-to-cart-btn">View Details</button>
+                        </div>
+                    </a>
+
+                    <a href="product-detail.html?product=skincare" class="product-link">
+                        <div class="product-item">
+                            <img src="skincare.png" alt="Organic Skincare">
+                            <h3>Organic Skincare</h3>
+                            <p>Nourish your skin naturally and gently.</p>
+                            <span class="price">$25.00</span>
+                            <button class="add-to-cart-btn">View Details</button>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="why-choose-us" id="why-choose-us">
+            <div class="container">
+                <h2>Why Choose Sudhh Organic?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fas fa-leaf"></i>
+                        <h3>100% Pure & Organic</h3>
+                        <p>Our products are cultivated without synthetic pesticides or chemicals.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-recycle"></i>
+                        <h3>Eco-Friendly Practices</h3>
+                        <p>We are committed to sustainable sourcing and minimal environmental impact.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Boost Your Health</h3>
+                        <p>Enjoy the superior nutritional benefits of truly organic ingredients.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>Ethical Sourcing</h3>
+                        <p>We work directly with farmers who share our commitment to quality and ethics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer id="contact" class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Footer Column 1: About -->
+                <div class="footer-col">
+                    <h3 class="text-xl font-bold mb-4">Shuddh Organic</h3>
+                    <p class="text-gray-400">Dedicated to bringing you the purest organic and eco-friendly products for a healthier lifestyle.</p>
+                </div>
+                <!-- Footer Column 2: Quick Links -->
+                <div class="footer-col">
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#featured-products" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="#why-choose-us" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
+                    </ul>
+                </div>
+                <!-- Footer Column 3: Contact Us -->
+                <div class="footer-col">
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p class="text-gray-400 flex items-start mb-2"><i class="fas fa-map-marker-alt mt-1 mr-3"></i> 123 Organic Lane, Green City, Rajkot, India</p>
+                    <p class="text-gray-400 flex items-center mb-2"><i class="fas fa-phone mr-3"></i> +91 123 456 7890</p>
+                    <p class="text-gray-400 flex items-center"><i class="fas fa-envelope mr-3"></i> info@shuddhorganic.com</p>
+                </div>
+                <!-- Footer Column 4: Follow Us -->
+                <div class="footer-col">
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-pinterest-p text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Shuddh Organic. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Side Drawer -->
+    <div class="mobile-side-drawer fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full z-50">
+        <div class="p-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">Menu</h2>
+                <button class="close-drawer-btn text-gray-600 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-4">
+                 <a href="#home" class="text-gray-800 font-medium hover:text-green-600 drawer-link">Home</a>
+                 <a href="#featured-products" class="text-gray-800 font-medium hover:text-green-600 drawer-link">Products</a>
+                 <a href="#why-choose-us" class="text-gray-800 font-medium hover:text-green-600 drawer-link">Why Choose Us</a>
+                 <a href="#testimonials" class="text-gray-800 font-medium hover:text-green-600 drawer-link">Testimonials</a>
+                 <a href="#contact" class="text-gray-800 font-medium hover:text-green-600 drawer-link">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <!-- Overlay for side drawer -->
+    <div class="overlay fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
