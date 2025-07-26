@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const firebaseConfig = {
-  apiKey: "AIzaSy...YOUR_KEY_HERE...",
-  authDomain: "your-project-id.firebaseapp.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project-id.appspot.com",
-  messagingSenderId: "1234567890",
-  appId: "1:1234567890:web:abcdef123456"
+   const firebaseConfig = {
+  apiKey: "AIzaSyBDPOqS36Ka9hNCfTuyCbhdgpn2dmIIw-o",
+  authDomain: "shuddh-organic-store.firebaseapp.com",
+  projectId: "shuddh-organic-store",
+  storageBucket: "shuddh-organic-store.firebasestorage.app",
+  messagingSenderId: "48476584230",
+  appId: "1:48476584230:web:a5ecb53d8adc3e3b6c69e7",
+  measurementId: "G-5WW4GGL034"
 };
 
 
