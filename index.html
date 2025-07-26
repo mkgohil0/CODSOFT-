@@ -13,7 +13,7 @@
 </head>
 <body class="bg-gray-50">
 
-    <header class="bg-white shadow-md">
+    <header class="bg-white shadow-md sticky top-0 z-40">
 
         <div class="bg-gray-100 py-2 px-4 sm:px-6 lg:px-8">
             <div class="max-w-7xl mx-auto flex justify-between items-center text-xs text-gray-600">
@@ -103,7 +103,6 @@
                 <h2>Our Featured Organic Products</h2>
                 <div class="product-grid">
                     
-                    <!-- Each product item is now a link -->
                     <a href="product-detail.html?product=honey" class="product-link">
                         <div class="product-item">
                             <img src="honey.png" alt="Organic Honey">
@@ -196,13 +195,64 @@
             </div>
         </section>
         
-        <!-- The rest of your main page content continues here... -->
-
     </main>
 
-    <footer id="contact">
-        <!-- Your footer content goes here -->
+    <footer id="contact" class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="footer-col">
+                    <h3 class="text-xl font-bold mb-4">Shuddh Organic</h3>
+                    <p class="text-gray-400">Dedicated to bringing you the purest organic and eco-friendly products for a healthier lifestyle.</p>
+                </div>
+                <div class="footer-col">
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#featured-products" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="#why-choose-us" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p class="text-gray-400 flex items-start mb-2"><i class="fas fa-map-marker-alt mt-1 mr-3"></i> 123 Organic Lane, Green City, Rajkot, India</p>
+                    <p class="text-gray-400 flex items-center mb-2"><i class="fas fa-phone mr-3"></i> +91 123 456 7890</p>
+                    <p class="text-gray-400 flex items-center"><i class="fas fa-envelope mr-3"></i> info@shuddhorganic.com</p>
+                </div>
+                <div class="footer-col">
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-pinterest-p text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Shuddh Organic. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
+
+    <div class="mobile-side-drawer fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full z-50">
+        <div class="p-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">Menu</h2>
+                <button class="close-drawer-btn text-gray-600 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-4">
+                 <a href="#home" class="text-gray-800 font-medium hover:text-green-600 drawer-link">Home</a>
+                 <a href="#featured-products" class="text-gray-800 font-medium hover:text-green-600 drawer-link">Products</a>
+                 <a href="#why-choose-us" class="text-gray-800 font-medium hover:text-green-600 drawer-link">Why Choose Us</a>
+                 <a href="#testimonials" class="text-gray-800 font-medium hover:text-green-600 drawer-link">Testimonials</a>
+                 <a href="#contact" class="text-gray-800 font-medium hover:text-green-600 drawer-link">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <div class="overlay fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
 
     <script src="script.js"></script>
 </body>
