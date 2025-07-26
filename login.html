@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Shuddh Organic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+        <div class="text-center mb-8">
+            <a href="index.html" class="flex items-center justify-center gap-2 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500"><path d="M12 22c-2 0-4-1-4.5-2.5S9 16 12 16s4.5 1 4.5 3.5S14 22 12 22Z"/><path d="M12 16V2"/><path d="m5 10 1.34 2.67a1 1 0 0 0 1.73.04L9 10"/><path d="m15 10 1.34 2.67a1 1 0 0 0 1.73.04L19 10"/></svg>
+                <span class="text-2xl font-bold text-gray-800">Shuddh Organic</span>
+            </a>
+            <h2 class="text-2xl font-bold text-gray-700">Welcome Back</h2>
+            <p class="text-gray-500">Sign in to your account</p>
+        </div>
+
+        <form id="login-form">
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-bold mb-2">Email Address</label>
+                <input type="email" id="email" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="you@example.com" required>
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block text-gray-700 font-bold mb-2">Password</label>
+                <input type="password" id="password" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="••••••••" required>
+            </div>
+            <div class="mb-6">
+                <button type="submit" class="w-full bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">Login</button>
+            </div>
+        </form>
+        
+        <p id="error-message" class="text-red-500 text-center mb-4 hidden"></p>
+
+        <p class="text-center text-gray-600">
+            Don't have an account? <a href="#" class="text-green-600 hover:underline font-bold">Sign up</a>
+        </p>
+    </div>
+
+    <!-- Firebase SDK Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <!-- Your new login script -->
+    <script src="login.js"></script>
+</body>
+</html>
