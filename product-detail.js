@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // This is our "database" of products. In a real website, this would come from a server.
     const products = {
         'honey': {
             name: 'Organic Honey',
@@ -12,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'oil': {
             name: 'Cold-Pressed Oil',
-            imageSrc: 'https://images.unsplash.com/photo-1579737190538-2ee7a4a98059?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NjY1NDl8MHwxfHNlYXJjaHwyNnx8b3JnYW5pYyUyMG9pbHxlbnwwfHx8fDE3MDA0NTc1Njh8MA&ixlib=rb-4.0.3&q=80&w=400',
+            imageSrc: 'oil.png',
             price: '$18.50',
             rating: 5,
             origin: 'Extracted from organic groundnuts in Gujarat.',
@@ -20,41 +19,59 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'grains': {
             name: 'Organic Grains',
-            imageSrc: 'https://images.unsplash.com/photo-1627885449272-4d1a49f80164?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NjY1NDl8MHwxfHNlYXJjaHwxNXx8b3JnYW5pYyUyMGdyYWlufGVufDB8fHx8MTcwMDQ1NzUxN3ww&ixlib=rb-4.0.3&q=80&w=400',
+            imageSrc: 'grain.png',
             price: '$7.99',
             rating: 4,
             origin: 'Harvested from the fertile plains of Punjab.',
             description: 'A wholesome blend of organic millets and quinoa. High in fiber and protein, these grains are perfect for a balanced diet, helping you stay energetic throughout the day.'
+        },
+        'tea': {
+            name: 'Herbal Tea Blends',
+            imageSrc: 'tea.png',
+            price: '$9.25',
+            rating: 4.5,
+            origin: 'A curated blend of herbs from the Nilgiri Hills.',
+            description: 'Soothing and refreshing, our herbal tea blends are naturally caffeine-free and packed with flavors that calm the mind and body. Enjoy a cup of tranquility.'
+        },
+        'spices': {
+            name: 'Organic Spices',
+            imageSrc: 'spices.png',
+            price: '$6.50',
+            rating: 4,
+            origin: 'Hand-ground spices from the fields of Kerala.',
+            description: 'Aromatic and flavorful, our organic spices will elevate your culinary creations. Free from artificial colors and preservatives, they bring authentic taste to your dishes.'
+        },
+        'skincare': {
+            name: 'Organic Skincare',
+            imageSrc: 'skincare.png',
+            price: '$25.00',
+            rating: 5,
+            origin: 'Crafted with botanicals from across India.',
+            description: 'Nourish your skin naturally and gently with our range of organic skincare products. Made with love and care, they are free from harsh chemicals and suitable for all skin types.'
         }
-        // Add more product objects here with unique keys
     };
 
-    // 1. Get the product ID from the URL
     const params = new URLSearchParams(window.location.search);
     const productId = params.get('product');
 
-    // 2. Find the product data from our "database"
     const productData = products[productId];
 
     const container = document.getElementById('product-detail-container');
     const notFoundDiv = document.getElementById('product-not-found');
 
     if (productData) {
-        // If we found the product, show the container
         container.classList.remove('hidden');
         
-        // 3. Populate the HTML elements with the product data
         document.getElementById('product-image').src = productData.imageSrc;
         document.getElementById('product-image').alt = productData.name;
         document.getElementById('product-title').textContent = productData.name;
         document.getElementById('product-origin').textContent = `Origin: ${productData.origin}`;
         document.getElementById('product-description').textContent = productData.description;
         document.getElementById('product-price').textContent = productData.price;
-        document.title = `${productData.name} - Shuddh Organic`; // Update page title
+        document.title = `${productData.name} - Shuddh Organic`;
 
-        // 4. Generate the star rating
         const ratingContainer = document.getElementById('product-rating');
-        ratingContainer.innerHTML = ''; // Clear any existing stars
+        ratingContainer.innerHTML = '';
         const fullStars = Math.floor(productData.rating);
         const halfStar = productData.rating % 1 !== 0;
 
@@ -70,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     } else {
-        // If no product was found for the ID, show the "not found" message
         notFoundDiv.classList.remove('hidden');
     }
 });
