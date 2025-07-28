@@ -3,18 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Product Listing</title>
+    <title>Shuddh Organic - Pure, Organic & Eco-Friendly Products</title>
+    <!-- Tailwind CSS for header styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link to your external stylesheet for the rest of the page -->
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons in the body content -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Our Products</h1>
-    </header>
-    <main>
-        <div id="product-container" class="product-container">
-            <!-- Products will be dynamically inserted here by script.js -->
+
+    <header class="bg-white shadow-md">
+        <!-- Top Bar -->
+        <div class="bg-gray-100 py-2 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto flex justify-between items-center text-xs text-gray-600">
+                <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>Delivering to Rajkot</span>
+                </div>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#why-choose-us" class="hover:text-green-600 transition-colors">Why Choose Us</a>
+                    <a href="#testimonials" class="hover:text-green-600 transition-colors">Testimonials</a>
+                    <a href="#contact" class="hover:text-green-600 transition-colors">Contact</a>
+                </div>
+            </div>
         </div>
+
+        <!-- Main Header -->
+        <div class="py-4 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500"><path d="M12 22c-2 0-4-1-4.5-2.5S9 16 12 16s4.5 1 4.5 3.5S14 22 12 22Z"/><path d="M12 16V2"/><path d="m5 10 1.34 2.67a1 1 0 0 0 1.73.04L9 10"/><path d="m15 10 1.34 2.67a1 1 0 0 0 1.73.04L19 10"/></svg>
+                    <span class="text-2xl font-bold text-gray-800" style="font-family: 'Lora', serif;">Shuddh Organic</span>
+                </a>
+
+                <!-- Search Bar -->
+                <div class="hidden lg:flex flex-1 max-w-xl">
+                    <div class="relative w-full">
+                        <input type="search" placeholder="Search Shuddh Organic..." class="w-full pl-4 pr-12 py-2.5 border border-gray-300 rounded-full focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all">
+                        <button class="absolute inset-y-0 right-0 flex items-center justify-center w-12 h-full text-white bg-green-500 rounded-r-full hover:bg-green-600 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Header Icons -->
+                <div class="flex items-center gap-4 sm:gap-6">
+                    <a href="login.html" class="hidden sm:flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span class="hidden xl:block">Account</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                        <span class="hidden xl:block">Cart</span>
+                        <span class="absolute -top-2 -right-2 bg-green-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                    </a>
+                </div>
+            </div>
+             <!-- Mobile Search Bar -->
+             <div class="mt-4 lg:hidden">
+                <div class="relative w-full">
+                    <input type="search" placeholder="Search Shuddh Organic..." class="w-full pl-4 pr-12 py-2.5 border border-gray-300 rounded-full focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all">
+                    <button class="absolute inset-y-0 right-0 flex items-center justify-center w-12 h-full text-white bg-green-500 rounded-r-full hover:bg-green-600 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-center h-14">
+                    <div class="flex items-center space-x-8">
+                        <a href="#" class="nav-link">All</a>
+                        <a href="#" class="nav-link">Today's Deals</a>
+                        <a href="#featured-products" class="nav-link">Best Sellers</a>
+                        <a href="#" class="nav-link">New Arrivals</a>
+                        <a href="#" class="nav-link">Gift Ideas</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-banner" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Embrace Purity, Live Organically.</h2>
+                    <p>Discover 100% pure, organic, and eco-friendly products for a healthier you and a happier planet.</p>
+                    <a href="#featured-products" class="btn">Shop Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-products" id="featured-products">
+            <div class="container">
+                <h2>Our Featured Organic Products</h2>
+                <div class="product-grid">
+                    <div class="product-item clickable-product" data-name="Organic Honey" data-price="$12.99" data-img="https://placehold.co/600x600/A8E6CF/333333?text=Organic+Honey" data-desc="Pure and natural, straight from the beehive.">
+                        <img src="https://placehold.co/400x400/A8E6CF/333333?text=Organic+Honey" alt="Organic Honey">
+                        <h3>Organic Honey</h3>
+                        <p>Pure and natural, straight from the beehive.</p>
+                        <span class="price">$12.99</span>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-item clickable-product" data-name="Cold-Pressed Oil" data-price="$18.50" data-img="https://placehold.co/600x600/DCEDC8/333333?text=Cold-Pressed+Oil" data-desc="Healthy and unrefined oils for your kitchen.">
+                        <img src="https://placehold.co/400x400/DCEDC8/333333?text=Cold-Pressed+Oil" alt="Cold-Pressed Oil">
+                        <h3>Cold-Pressed Oil</h3>
+                        <p>Healthy and unrefined oils for your kitchen.</p>
+                        <span class="price">$18.50</span>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-item clickable-product" data-name="Organic Grains" data-price="$7.99" data-img="https://placehold.co/600x600/FFD3B5/333333?text=Organic+Grains" data-desc="Wholesome and nutritious for a balanced diet.">
+                        <img src="https://placehold.co/400x400/FFD3B5/333333?text=Organic+Grains" alt="Organic Grains">
+                        <h3>Organic Grains</h3>
+                        <p>Wholesome and nutritious for a balanced diet.</p>
+                        <span class="price">$7.99</span>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-item clickable-product" data-name="Herbal Tea Blends" data-price="$9.25" data-img="https://placehold.co/600x600/FFAAA5/333333?text=Herbal+Tea" data-desc="Soothing and refreshing, naturally.">
+                        <img src="https://placehold.co/400x400/FFAAA5/333333?text=Herbal+Tea" alt="Herbal Tea Blends">
+                        <h3>Herbal Tea Blends</h3>
+                        <p>Soothing and refreshing, naturally.</p>
+                        <span class="price">$9.25</span>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-choose-us" id="why-choose-us">
+            <div class="container">
+                <h2>Why Choose Sudhh Organic?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fas fa-leaf"></i>
+                        <h3>100% Pure & Organic</h3>
+                        <p>Our products are cultivated without synthetic pesticides or chemicals.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-recycle"></i>
+                        <h3>Eco-Friendly Practices</h3>
+                        <p>We are committed to sustainable sourcing and minimal environmental impact.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Boost Your Health</h3>
+                        <p>Enjoy the superior nutritional benefits of truly organic ingredients.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-item">
+                        <p>"Sudhh Organic's honey is the best I've ever tasted! So pure and delicious."</p>
+                        <span>- Priya S.</span>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"I love their cold-pressed oils. You can truly feel the difference in quality."</p>
+                        <span>- Rohan K.</span>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Finally found a brand that truly cares about sustainability. Highly recommend!"</p>
+                        <span>- Anjali M.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-subscription" id="newsletter">
+            <div class="container">
+                <h2>Stay Updated!</h2>
+                <p>Subscribe to our newsletter for exclusive offers, new product launches, and healthy tips.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </section>
     </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Sudhh Organic</h3>
+                    <p>Dedicated to bringing you the purest organic and eco-friendly products for a healthier lifestyle.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#featured-products">Products</a></li>
+                        <li><a href="#why-choose-us">About Us</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Organic Lane, Green City, India</p>
+                    <p><i class="fas fa-phone"></i> +91 123 456 7890</p>
+                    <p><i class="fas fa-envelope"></i> info@sudhhorganic.com</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Sudhh Organic. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
