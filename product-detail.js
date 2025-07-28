@@ -1,102 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-   const firebaseConfig = {
-  apiKey: "AIzaSyBDPOqS36Ka9hNCfTuyCbhdgpn2dmIIw-o",
-  authDomain: "shuddh-organic-store.firebaseapp.com",
-  projectId: "shuddh-organic-store",
-  storageBucket: "shuddh-organic-store.firebasestorage.app",
-  messagingSenderId: "48476584230",
-  appId: "1:48476584230:web:a5ecb53d8adc3e3b6c69e7",
-  measurementId: "G-5WW4GGL034"
-};
+    const productDetailContainer = document.getElementById('product-detail-container');
 
+    // This check prevents errors if the element doesn't exist
+    if (!productDetailContainer) {
+        console.error('Product detail container not found!');
+        return;
+    }
+    
+    // The same product data needs to be available here to find the product
+    const products = [
+        { id: 1, name: 'Skincare', price: 25.00, image: 'skincare.png', description: 'High-quality skincare product for all skin types.' },
+        { id: 2, name: 'Honey', price: 15.50, image: 'honey.png', description: 'Pure, natural honey from local farms.' },
+        { id: 3, name: 'Grain', price: 10.00, image: 'grain.png', description: 'Organic whole grains, rich in fiber.' },
+        { id: 4, name: 'Oil', price: 20.00, image: 'oil.png', description: 'Cold-pressed cooking oil for a healthy lifestyle.' },
+        { id: 5, name: 'Spices', price: 8.75, image: 'spices.png', description: 'Aromatic spices sourced from the best regions.' },
+        { id: 6, name: 'Tea', price: 12.25, image: 'tea.png', description: 'Exquisite tea leaves for a refreshing experience.' }
+    ];
 
-    const products = {
-        'honey': {
-            name: 'Organic Honey',
-            imageSrc: 'honey.png',
-            price: '$12.99',
-            rating: 4.5,
-            origin: 'Sourced from the pristine Himalayan foothills.',
-            description: '100% pure, raw, and unfiltered honey, rich in natural enzymes and antioxidants. Perfect for sweetening your tea, drizzling on yogurt, or as a healthy sugar substitute.'
-        },
-        'oil': {
-            name: 'Cold-Pressed Oil',
-            imageSrc: 'oil.png',
-            price: '$18.50',
-            rating: 5,
-            origin: 'Extracted from organic groundnuts in Gujarat.',
-            description: 'Our cold-pressed groundnut oil retains all the natural nutrients and flavor. It is ideal for sautéing, frying, and all your daily cooking needs, promoting a healthy heart.'
-        },
-        'grains': {
-            name: 'Organic Grains',
-            imageSrc: 'grain.png',
-            price: '$7.99',
-            rating: 4,
-            origin: 'Harvested from the fertile plains of Punjab.',
-            description: 'A wholesome blend of organic millets and quinoa. High in fiber and protein, these grains are perfect for a balanced diet, helping you stay energetic throughout the day.'
-        },
-        'tea': {
-            name: 'Herbal Tea Blends',
-            imageSrc: 'tea.png',
-            price: '$9.25',
-            rating: 4.5,
-            origin: 'A curated blend of herbs from the Nilgiri Hills.',
-            description: 'Soothing and refreshing, our herbal tea blends are naturally caffeine-free and packed with flavors that calm the mind and body. Enjoy a cup of tranquility.'
-        },
-        'spices': {
-            name: 'Organic Spices',
-            imageSrc: 'spices.png',
-            price: '$6.50',
-            rating: 4,
-            origin: 'Hand-ground spices from the fields of Kerala.',
-            description: 'Aromatic and flavorful, our organic spices will elevate your culinary creations. Free from artificial colors and preservatives, they bring authentic taste to your dishes.'
-        },
-        'skincare': {
-            name: 'Organic Skincare',
-            imageSrc: 'skincare.png',
-            price: '$25.00',
-            rating: 5,
-            origin: 'Crafted with botanicals from across India.',
-            description: 'Nourish your skin naturally and gently with our range of organic skincare products. Made with love and care, they are free from harsh chemicals and suitable for all skin types.'
-        }
-    };
+    // Get the product ID from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
 
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get('product');
+    // Find the product that matches the ID from the URL
+    const product = products.find(p => p.id == productId);
 
-    const productData = products[productId];
-
-    const container = document.getElementById('product-detail-container');
-    const notFoundDiv = document.getElementById('product-not-found');
-
-    if (productData) {
-        container.classList.remove('hidden');
-        
-        document.getElementById('product-image').src = productData.imageSrc;
-        document.getElementById('product-image').alt = productData.name;
-        document.getElementById('product-title').textContent = productData.name;
-        document.getElementById('product-origin').textContent = `Origin: ${productData.origin}`;
-        document.getElementById('product-description').textContent = productData.description;
-        document.getElementById('product-price').textContent = productData.price;
-        document.title = `${productData.name} - Shuddh Organic`;
-
-        const ratingContainer = document.getElementById('product-rating');
-        ratingContainer.innerHTML = '';
-        const fullStars = Math.floor(productData.rating);
-        const halfStar = productData.rating % 1 !== 0;
-
-        for (let i = 0; i < fullStars; i++) {
-            ratingContainer.innerHTML += '<i class="fas fa-star"></i>';
-        }
-        if (halfStar) {
-            ratingContainer.innerHTML += '<i class="fas fa-star-half-alt"></i>';
-        }
-        const emptyStars = 5 - Math.ceil(productData.rating);
-        for (let i = 0; i < emptyStars; i++) {
-            ratingContainer.innerHTML += '<i class="far fa-star"></i>';
-        }
-
+    // Display the product details or a "not found" message
+    if (product) {
+        productDetailContainer.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h2>${product.name}</h2>
+            <p>${product.description}</p>
+            <p><strong>Price:</strong> $${product.price.toFixed(2)}</p>
+        `;
     } else {
-        notFoundDiv.classList.remove('hidden');
+        productDetailContainer.innerHTML = '<p>Product not found. Please go back and select a product.</p>';
     }
 });
