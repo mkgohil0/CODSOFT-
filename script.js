@@ -1,44 +1,48 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const productContainer = document.getElementById('product-container');
+/**
+ * script.js
+ * This file handles the interactive elements of the Sudhh Organic website.
+ */
 
-    // This check prevents errors if the element doesn't exist
-    if (!productContainer) {
-        console.error('Product container not found!');
-        return;
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- Hero Banner Background Color Changer ---
+    const heroBanner = document.querySelector('.hero-banner');
+    if (heroBanner) {
+        const heroColors = [
+            'var(--hero-color-1)',
+            'var(--hero-color-2)',
+            'var(--hero-color-3)',
+            'var(--hero-color-4)',
+            'var(--hero-color-5)'
+        ];
+        let currentColorIndex = 0;
+
+        function changeHeroColor() {
+            currentColorIndex = (currentColorIndex + 1) % heroColors.length;
+            heroBanner.style.backgroundColor = heroColors[currentColorIndex];
+        }
+        setInterval(changeHeroColor, 5000);
     }
 
-    // Sample product data
-    const products = [
-        { id: 1, name: 'Skincare', price: 25.00, image: 'skincare.png', description: 'High-quality skincare product for all skin types.' },
-        { id: 2, name: 'Honey', price: 15.50, image: 'honey.png', description: 'Pure, natural honey from local farms.' },
-        { id: 3, name: 'Grain', price: 10.00, image: 'grain.png', description: 'Organic whole grains, rich in fiber.' },
-        { id: 4, name: 'Oil', price: 20.00, image: 'oil.png', description: 'Cold-pressed cooking oil for a healthy lifestyle.' },
-        { id: 5, name: 'Spices', price: 8.75, image: 'spices.png', description: 'Aromatic spices sourced from the best regions.' },
-        { id: 6, name: 'Tea', price: 12.25, image: 'tea.png', description: 'Exquisite tea leaves for a refreshing experience.' }
-    ];
+    // --- Product Item Click Handler ---
+    document.querySelectorAll('.clickable-product').forEach(item => {
+        item.addEventListener('click', event => {
+            // Prevent button clicks from navigating
+            if (event.target.tagName === 'BUTTON') {
+                return;
+            }
 
-    // Function to navigate to the product detail page
-    function showProductDetails(productId) {
-        window.location.href = `product-detail.html?id=${productId}`;
-    }
+            const name = item.dataset.name;
+            const price = item.dataset.price;
+            const img = item.dataset.img;
+            const desc = item.dataset.desc;
 
-    // Populate product cards
-    products.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.classList.add('product-card');
-        productCard.dataset.productId = product.id;
+            // Create the URL with query parameters
+            const url = `product-detail.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}&desc=${encodeURIComponent(desc)}`;
 
-        productCard.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>Price: $${product.price.toFixed(2)}</p>
-        `;
-
-        // Add a click event listener to navigate to the product detail page
-        productCard.addEventListener('click', () => {
-            showProductDetails(product.id);
+            // Go to the product detail page
+            window.location.href = url;
         });
-
-        productContainer.appendChild(productCard);
     });
+
 });
