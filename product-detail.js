@@ -1,38 +1,27 @@
+/**
+ * product-detail.js
+ * This script reads product data from the URL and displays it on the product detail page.
+ */
 document.addEventListener('DOMContentLoaded', () => {
-    const productDetailContainer = document.getElementById('product-detail-container');
+    // Get the query parameters from the URL
+    const params = new URLSearchParams(window.location.search);
 
-    // This check prevents errors if the element doesn't exist
-    if (!productDetailContainer) {
-        console.error('Product detail container not found!');
-        return;
+    const productName = params.get('name');
+    const productPrice = params.get('price');
+    const productImg = params.get('img');
+    const productDesc = params.get('desc');
+
+    // Update the page with the product data, providing defaults if not found
+    if (document.getElementById('product-name')) {
+        document.getElementById('product-name').textContent = productName || 'Product Not Found';
     }
-    
-    // The same product data needs to be available here to find the product
-    const products = [
-        { id: 1, name: 'Skincare', price: 25.00, image: 'skincare.png', description: 'High-quality skincare product for all skin types.' },
-        { id: 2, name: 'Honey', price: 15.50, image: 'honey.png', description: 'Pure, natural honey from local farms.' },
-        { id: 3, name: 'Grain', price: 10.00, image: 'grain.png', description: 'Organic whole grains, rich in fiber.' },
-        { id: 4, name: 'Oil', price: 20.00, image: 'oil.png', description: 'Cold-pressed cooking oil for a healthy lifestyle.' },
-        { id: 5, name: 'Spices', price: 8.75, image: 'spices.png', description: 'Aromatic spices sourced from the best regions.' },
-        { id: 6, name: 'Tea', price: 12.25, image: 'tea.png', description: 'Exquisite tea leaves for a refreshing experience.' }
-    ];
-
-    // Get the product ID from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-
-    // Find the product that matches the ID from the URL
-    const product = products.find(p => p.id == productId);
-
-    // Display the product details or a "not found" message
-    if (product) {
-        productDetailContainer.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-            <h2>${product.name}</h2>
-            <p>${product.description}</p>
-            <p><strong>Price:</strong> $${product.price.toFixed(2)}</p>
-        `;
-    } else {
-        productDetailContainer.innerHTML = '<p>Product not found. Please go back and select a product.</p>';
+    if (document.getElementById('product-price')) {
+        document.getElementById('product-price').textContent = productPrice || '$0.00';
+    }
+    if (document.getElementById('product-img')) {
+        document.getElementById('product-img').src = productImg || 'https://placehold.co/600x600/CCCCCC/FFFFFF?text=No+Image';
+    }
+    if (document.getElementById('product-desc')) {
+        document.getElementById('product-desc').textContent = productDesc || 'No description available.';
     }
 });
