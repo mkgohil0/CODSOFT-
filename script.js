@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const productContainer = document.getElementById('product-container');
 
+    // This check prevents errors if the element doesn't exist
+    if (!productContainer) {
+        console.error('Product container not found!');
+        return;
+    }
+
     // Sample product data
     const products = [
         { id: 1, name: 'Skincare', price: 25.00, image: 'skincare.png', description: 'High-quality skincare product for all skin types.' },
