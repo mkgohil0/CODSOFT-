@@ -1,93 +1,356 @@
-body {
-    font-family: Arial, sans-serif;
+/*
+  style.css
+  This file contains the custom styles for the Sudhh Organic website.
+  The header is styled using Tailwind CSS directly in the index.html file.
+  This stylesheet handles the main content sections, footer, and custom header animations.
+*/
+
+/* General Styling */
+:root {
+    /* Brand Colors (Organic & Earthy) */
+    --brand-primary: #4CAF50; /* A fresh, appealing green */
+    --brand-secondary: #388E3C; /* Darker green for accents */
+    --brand-warm-grey: #f8f8f8; /* Soft grey for backgrounds */
+
+    /* Text Colors */
+    --text-dark: #212121;
+    --text-light: #FBFBFB;
+    --text-muted: #757575;
+
+    /* Generic Colors */
+    --white: #FFFFFF;
+    --border-light: #E0E0E0;
+
+    /* Hero Banner Dynamic Colors */
+    --hero-color-1: #A8E6CF; /* Pale mint */
+    --hero-color-2: #DCEDC8; /* Light pistachio */
+    --hero-color-3: #FFD3B5; /* Soft peach */
+    --hero-color-4: #FFAAA5; /* Muted coral */
+    --hero-color-5: #FF8C94; /* Dusty rose */
+}
+
+/* Base Styles */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--brand-warm-grey);
+    overflow-x: hidden;
 }
 
-main {
-    padding: 1rem;
-}
-
-.product-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
+.container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-.product-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
+h2 {
+    font-family: 'Lora', serif;
+    font-size: 2.5em;
     text-align: center;
-    cursor: pointer;
-    transition: box-shadow 0.3s, transform 0.3s;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 10px;
+}
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--brand-primary);
+    border-radius: 2px;
 }
 
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.product-card img {
-    max-width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-}
-
-.product-card h3 {
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
-}
-
-.product-card p {
-    color: #555;
-    font-size: 1rem;
-}
-
-.product-detail-container {
-    background-color: #fff;
-    padding: 2rem;
-    max-width: 800px;
-    margin: 2rem auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
-.product-detail-container img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto 1rem;
-    border-radius: 5px;
-}
-
-.back-link {
-    display: block;
-    text-align: center;
-    margin-top: 1rem;
-    color: #333;
+a {
     text-decoration: none;
-    font-weight: bold;
-    padding: 10px 15px;
-    background-color: #eee;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    color: var(--brand-primary);
+    transition: color 0.2s ease;
 }
 
-.back-link:hover {
-    background-color: #ddd;
+.btn {
+    display: inline-block;
+    background-color: var(--brand-primary);
+    color: var(--text-light);
+    padding: 12px 28px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.btn:hover {
+    background-color: var(--brand-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Navigation Link Animation */
+.nav-link {
+    font-family: 'Inter', sans-serif;
+    color: #374151; /* gray-700 */
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+.nav-link:hover {
+    color: var(--brand-secondary); /* Use our brand color */
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--brand-primary); /* Use our brand color */
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+
+/* Hero Banner */
+.hero-banner {
+    color: var(--text-dark);
+    text-align: center;
+    padding: 120px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 550px;
+    background-color: var(--hero-color-1); /* Initial color */
+    transition: background-color 1.5s ease-in-out;
+}
+.hero-content {
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 40px;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+.hero-content h2 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    line-height: 1.2;
+}
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: var(--text-muted);
+}
+
+/* Sections General Styling */
+section {
+    padding: 80px 0;
+}
+section:nth-of-type(even) {
+    background-color: var(--white);
+}
+
+/* Featured Products */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+.product-item {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--border-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Make it look clickable */
+}
+.product-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+.product-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.product-item h3 {
+    font-size: 1.4em;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+.product-item p {
+    font-size: 0.95em;
+    color: var(--text-muted);
+    min-height: 45px;
+}
+.product-item .price {
+    font-size: 1.5em;
+    color: var(--brand-primary);
+    font-weight: 700;
+    display: block;
+    margin: 15px 0;
+}
+.add-to-cart-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Why Choose Us */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+.benefit-item i {
+    font-size: 3em;
+    color: var(--brand-primary);
+    margin-bottom: 15px;
+}
+.benefit-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Testimonials */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.testimonial-item {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    border-left: 5px solid var(--brand-primary);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.testimonial-item p {
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+.testimonial-item span {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* Newsletter */
+.newsletter-subscription {
+    background-color: var(--brand-secondary);
+    color: var(--text-light);
+    text-align: center;
+}
+.newsletter-subscription h2, .newsletter-subscription p {
+    color: var(--text-light);
+}
+.newsletter-subscription h2::after {
+    background-color: var(--text-light);
+}
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.newsletter-form input {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 50px 0 0 50px;
+    outline: none;
+    font-size: 1em;
+}
+.newsletter-form .btn {
+    border-radius: 0 50px 50px 0;
+    box-shadow: none;
+}
+
+/* Footer */
+footer {
+    background-color: #1c2833; /* Darker footer background */
+    color: rgba(255, 255, 255, 0.8);
+    padding-top: 60px;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding-bottom: 40px;
+}
+.footer-col h3 {
+    color: var(--white);
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+.footer-col ul {
+    list-style: none;
+}
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+.footer-col ul li a {
+    color: rgba(255, 255, 255, 0.8);
+}
+.footer-col ul li a:hover {
+    color: var(--white);
+}
+.social-links a {
+    color: rgba(255, 255, 255, 0.8);
+    margin-right: 15px;
+    font-size: 1.4em;
+}
+.social-links a:hover {
+    color: var(--brand-primary);
+}
+.copyright {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9em;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2em;
+    }
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .newsletter-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .newsletter-form input, .newsletter-form .btn {
+        width: 100%;
+        border-radius: 50px;
+    }
 }
