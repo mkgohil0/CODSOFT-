@@ -1,48 +1,74 @@
-/**
- * script.js
- * This file handles the interactive elements of the Sudhh Organic website.
- */
+// Import the functions you need from the Firebase SDKs
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
-document.addEventListener('DOMContentLoaded', function() {
+// Your web app's Firebase configuration
+// IMPORTANT: For production, secure these keys using App Check and strong security rules.
+const firebaseConfig = {
+  apiKey: "AIzaSyBDPOqS36Ka9hNCfTuyCbhdgpn2dmIIw-o",
+  authDomain: "shuddh-organic-store.firebaseapp.com",
+  projectId: "shuddh-organic-store",
+  storageBucket: "shuddh-organic-store.appspot.com", // Corrected storage bucket domain
+  messagingSenderId: "48476584230",
+  appId: "1:48476584230:web:a5ecb53d8adc3e3b6c69e7",
+  measurementId: "G-5WW4GGL034"
+};
 
-    // --- Hero Banner Background Color Changer ---
-    const heroBanner = document.querySelector('.hero-banner');
-    if (heroBanner) {
-        const heroColors = [
-            'var(--hero-color-1)',
-            'var(--hero-color-2)',
-            'var(--hero-color-3)',
-            'var(--hero-color-4)',
-            'var(--hero-color-5)'
-        ];
-        let currentColorIndex = 0;
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// Get the Auth service
+const auth = getAuth(app);
 
-        function changeHeroColor() {
-            currentColorIndex = (currentColorIndex + 1) % heroColors.length;
-            heroBanner.style.backgroundColor = heroColors[currentColorIndex];
-        }
-        setInterval(changeHeroColor, 5000);
+// Get elements from the DOM
+const loginForm = document.getElementById('login-form');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const errorMessage = document.getElementById('error-message');
+
+// Add submit event listener to the form
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent the form from submitting normally
+
+    // Get user input
+    const email = emailInput.value;
+    const password = passwordInput.value;
+
+    // Clear previous error messages
+    errorMessage.textContent = '';
+    errorMessage.classList.add('hidden');
+
+    // Validate input
+    if (!email || !password) {
+        errorMessage.textContent = 'Please enter both email and password.';
+        errorMessage.classList.remove('hidden');
+        return;
     }
 
-    // --- Product Item Click Handler ---
-    document.querySelectorAll('.clickable-product').forEach(item => {
-        item.addEventListener('click', event => {
-            // Prevent button clicks from navigating
-            if (event.target.tagName === 'BUTTON') {
-                return;
+    // Sign in with Firebase using the new modular functions
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in successfully
+            const user = userCredential.user;
+            console.log('Successfully logged in:', user.email);
+            
+            // Redirect to the homepage after successful login
+            window.location.href = 'index.html'; 
+        })
+        .catch((error) => {
+            // Handle specific authentication errors
+            const errorCode = error.code;
+            let friendlyMessage = 'An unknown error occurred. Please try again.';
+
+            if (errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password' || errorCode === 'auth/invalid-credential') {
+                friendlyMessage = 'Invalid email or password. Please try again.';
+            } else if (errorCode === 'auth/invalid-email') {
+                friendlyMessage = 'The email address is not valid.';
             }
-
-            const name = item.dataset.name;
-            const price = item.dataset.price;
-            const img = item.dataset.img;
-            const desc = item.dataset.desc;
-
-            // Create the URL with query parameters
-            const url = `product-detail.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}&desc=${encodeURIComponent(desc)}`;
-
-            // Go to the product detail page
-            window.location.href = url;
+            
+            console.error('Login Error:', error);
+            
+            // Show the user-friendly error message
+            errorMessage.textContent = friendlyMessage;
+            errorMessage.classList.remove('hidden');
         });
-    });
-
 });
